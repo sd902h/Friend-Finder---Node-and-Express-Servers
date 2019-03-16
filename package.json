@@ -1,0 +1,25 @@
+{
+  "name": "Friend-Finder---Node-and-Express-Servers",
+  "version": "1.0.0",
+  "description": "Using Node and Express to build a full stack site that takes in results from users' surveys, then compare their answers with those from other users.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sd902h/Friend-Finder---Node-and-Express-Servers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sd902h/Friend-Finder---Node-and-Express-Servers/issues"
+  },
+  "homepage": "https://github.com/sd902h/Friend-Finder---Node-and-Express-Servers#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  }
+}
