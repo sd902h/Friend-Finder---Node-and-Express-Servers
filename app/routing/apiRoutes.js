@@ -1,14 +1,18 @@
 var friendsList = require("../data/friends.js");
 
-function findCompatibility(userOneScores, userTwoScores) {
-  var tally = 0;
+function findCompatibility(userOneScores, userTwoScores, name, photo) {
+  var tally = {
+    count: 0,
+    name: name,
+    photo: photo
+  };
 
   for (var i = 0; i < userOneScores.length; i++) {
     var firstUserElement = userOneScores[i];
     var secondUserElement = userTwoScores[i];
 
     var comparison = Math.abs(firstUserElement - secondUserElement);
-    tally += comparison;
+    tally.count += comparison;
   }
 
   return tally;
@@ -25,11 +29,27 @@ module.exports = function(app) {
 
     var match = [];
     for (var i = 0; i < friendsList.length - 1; i++) {
-      var tallyResult = findCompatibility(friendScore, friendsList[i].scores);
+      var tallyResult = findCompatibility(
+        friendScore,
+        friendsList[i].scores,
+        friendsList[i].name,
+        friendsList[i].photo
+      );
       match.push(tallyResult);
     }
-    console.log(Math.min(...match));
 
-    res.json("true");
+    var minimum = match[0].count;
+    var minimumMatch = {};
+    for (var i = 1; i < match.length; i++) {
+      if (match[i].count < minimum) {
+        minimum = match[i].count;
+        minimumMatch = match[i];
+      }
+    }
+
+    console.log(minimum);
+    console.log(match);
+
+    res.json(minimumMatch);
   });
 };
